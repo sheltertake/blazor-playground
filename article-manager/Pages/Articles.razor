@@ -9,21 +9,45 @@
     </div>
     }
 
-    @if(currentArticle == null)
+    @if(articleModel.Item == null)
     {
-    <ArticleList 
-        ArticleListItems="articleListItems"
+    <ItemList 
+        Model="articlesModel"
         OnAddClick="AddArticle"
         OnEditClick="EditArticle"
         OnDeleteClick="DeleteArticle">
-    </ArticleList>
+    </ItemList>
     }
     else 
     {
-    <Article
-        Item="currentArticle"
+    <ItemDetails 
+        ItemType="ArticleItem"
+        Model="articleModel"
         OnSaveClick="SaveArticle" 
         OnCancelClick="ShowList">
-    </Article>
+        <FieldsTemplate>
+            <div class="form-group">
+                <label for="category">Category: </label>
+                <InputSelect id="category" @bind-Value="context.CategoryId" class="form-control">
+                @foreach(var category in context.Categories) 
+                {
+                    <option value="@category.Value">@category.Label</option>
+                }
+                </InputSelect>
+                <ValidationMessage For="@(() => context.CategoryId)" />
+            </div>
+
+            <div class="form-group">
+                <label for="name">Title: </label>
+                <InputText id="name" @bind-Value="context.Title" class="form-control" />
+                <ValidationMessage For="@(() => context.Title)" />
+            </div>
+
+            <div class="form-group">
+                <label for="content">Content: </label>
+                <InputTextArea id="content" @bind-Value="context.Content" class="form-control" />
+            </div>
+        </FieldsTemplate>
+    </ItemDetails>
     }
 </div>
