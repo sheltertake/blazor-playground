@@ -19,5 +19,15 @@
         <component type="typeof(App)" render-mode="ServerPrerendered" />
     </app>
     <script src="_framework/blazor.server.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+      window.showConfirmDelete = (id) => {
+          $('#' + id).modal('show');
+      };
+      window.hideConfirmDelete = (id) => {
+          $('#' + id).modal('hide');
+      };
+    </script>  
 </body>
 </html>
