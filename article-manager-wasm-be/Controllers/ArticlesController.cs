@@ -51,7 +51,7 @@ namespace backend.Controllers
                 {
                     Id = x.Id,
                     Title = x.Title,
-                    CategoryId = x.CategoryId.ToString(),
+                    CategoryId = x.CategoryId,
                     Content = x.Content
                 }).SingleOrDefault();
             
@@ -69,7 +69,7 @@ namespace backend.Controllers
                 {
                     Title = item.Title,
                     Content = item.Content,
-                    CategoryId = int.Parse(item.CategoryId)
+                    CategoryId = item.CategoryId
                 };
                 this.db.Add(entity);
                 this.db.SaveChanges();
@@ -88,7 +88,7 @@ namespace backend.Controllers
                 if(entity == null) return NotFound();
                 entity.Title = item.Title;
                 entity.Content = item.Content;
-                entity.CategoryId = int.Parse(item.CategoryId);
+                entity.CategoryId = item.CategoryId;
                 this.db.SaveChanges();
                 return NoContent();
             }
@@ -110,7 +110,7 @@ namespace backend.Controllers
             return this.db.ArticleCategories
                 .Select(x => new InputSelectItem()
                 {
-                    Value = x.Id.ToString(),
+                    Value = x.Id,
                     Label = x.Name
                 }).ToArray();
         }
