@@ -1,8 +1,8 @@
-namespace article_manager.Models
+namespace frontendlib.Models
 {
     public class InputSelectItem
     {
-        public string Value { get; set; }
+        public int Value { get; set; }
         public string Label { get; set; }
     }
 }
