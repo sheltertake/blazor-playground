@@ -1,4 +1,4 @@
-namespace article_manager_wasm.Models
+namespace shared.Models
 {
     public class MenuItem
     {
