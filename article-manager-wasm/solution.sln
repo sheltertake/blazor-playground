@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "shared", "..\article-manage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "frontendlib", "..\article-manager-lib\frontendlib.csproj", "{1C6310E7-867F-4B07-82C7-93EFF01088F8}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "article-manager", "..\article-manager\article-manager.csproj", "{2F65D443-89F1-46D9-BE59-86394A06CECA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{1C6310E7-867F-4B07-82C7-93EFF01088F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C6310E7-867F-4B07-82C7-93EFF01088F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C6310E7-867F-4B07-82C7-93EFF01088F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F65D443-89F1-46D9-BE59-86394A06CECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F65D443-89F1-46D9-BE59-86394A06CECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F65D443-89F1-46D9-BE59-86394A06CECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F65D443-89F1-46D9-BE59-86394A06CECA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

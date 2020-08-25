@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\article-manager-lib\frontendlib.csproj" />
+    <ProjectReference Include="..\article-manager-wasm-shared\shared.csproj" />
   </ItemGroup>
 
 </Project>
