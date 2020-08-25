@@ -11,7 +11,7 @@ namespace shared.Models
         [Required]
         [StringLength(500, ErrorMessage = "Title is too long.")]
         public string Title { get; set; }
-        public string CategoryId { get; set; }
+        public int CategoryId { get; set; }
         public InputSelectItem[] Categories { get; set; }
         public string Content { get; set; }
     }

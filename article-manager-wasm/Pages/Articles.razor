@@ -9,21 +9,33 @@
     </div>
     }
 
-    @if(currentArticle == null)
+    @if(articleModel.Item == null)
     {
-    <ArticleList 
-        ArticleListItems="articleListItems"
+    <ItemList 
+        Model="articlesModel"
         OnAddClick="AddArticle"
         OnEditClick="EditArticle"
         OnDeleteClick="DeleteArticle">
-    </ArticleList>
+    </ItemList>
     }
     else 
     {
-    <Article
-        Item="currentArticle"
+    <ItemDetails 
+        ItemType="ArticleItem"
+        Model="articleModel"
         OnSaveClick="SaveArticle" 
         OnCancelClick="ShowList">
-    </Article>
+        <FieldsTemplate>
+            <FieldInputSelect 
+                Id="category" Label="Category" SelectItems="context.Categories"
+                @bind-Value="context.CategoryId" Validation="@(() => context.CategoryId)" />
+            <FieldInputText 
+                Id="title" Label="Title"
+                @bind-Value="context.Title" Validation="@(() => context.Title)" />
+            <FieldInputTextArea 
+                Id="content" Label="Content" 
+                @bind-Value="context.Content" Validation="@(() => context.Content)" />
+        </FieldsTemplate>
+    </ItemDetails>
     }
 </div>

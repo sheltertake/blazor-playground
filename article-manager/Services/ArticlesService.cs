@@ -91,10 +91,10 @@ namespace article_manager.Services
             return this.db.SaveChangesAsync();
         }
 
-        private Task<InputSelectItem[]> getCategories() 
+        private Task<shared.Models.InputSelectItem[]> getCategories() 
         {
             return this.db.ArticleCategories
-                .Select(x => new InputSelectItem()
+                .Select(x => new shared.Models.InputSelectItem()
                 {
                     Value = x.Id,
                     Label = x.Name
