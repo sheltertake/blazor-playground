@@ -7,7 +7,7 @@ using frontendlib.Models;
 
 namespace article_manager.Pages
 {
-    public class ArticleCategoriesBase : ComponentBase
+     public class ArticleCategoriesBase : ComponentBase
     {
         protected ItemListModel categoriesModel = new ItemListModel()
         {

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using article_manager.Models;
 using backend.Data;
 using backend.Data.Entities;
+using frontendlib.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace article_manager.Services
@@ -50,7 +51,7 @@ namespace article_manager.Services
                 {
                     Id = x.Id,
                     Title = x.Title,
-                    CategoryId = x.CategoryId.ToString(),
+                    CategoryId = x.CategoryId,
                     Content = x.Content
                 }).SingleOrDefaultAsync();
             
@@ -65,7 +66,7 @@ namespace article_manager.Services
             {
                 Title = item.Title,
                 Content = item.Content,
-                CategoryId = int.Parse(item.CategoryId)
+                CategoryId = item.CategoryId
             };
             this.db.Add(article);
             await this.db.SaveChangesAsync();
@@ -78,7 +79,7 @@ namespace article_manager.Services
             if(article == null) throw new ArgumentException("article not found", "item");
             article.Title = item.Title;
             article.Content = item.Content;
-            article.CategoryId = int.Parse(item.CategoryId);
+            article.CategoryId = item.CategoryId;
             return this.db.SaveChangesAsync();
         }
 
@@ -95,7 +96,7 @@ namespace article_manager.Services
             return this.db.ArticleCategories
                 .Select(x => new InputSelectItem()
                 {
-                    Value = x.Id.ToString(),
+                    Value = x.Id,
                     Label = x.Name
                 }).ToArrayAsync();
         }

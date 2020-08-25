@@ -26,27 +26,15 @@
         OnSaveClick="SaveArticle" 
         OnCancelClick="ShowList">
         <FieldsTemplate>
-            <div class="form-group">
-                <label for="category">Category: </label>
-                <InputSelect id="category" @bind-Value="context.CategoryId" class="form-control">
-                @foreach(var category in context.Categories) 
-                {
-                    <option value="@category.Value">@category.Label</option>
-                }
-                </InputSelect>
-                <ValidationMessage For="@(() => context.CategoryId)" />
-            </div>
-
-            <div class="form-group">
-                <label for="name">Title: </label>
-                <InputText id="name" @bind-Value="context.Title" class="form-control" />
-                <ValidationMessage For="@(() => context.Title)" />
-            </div>
-
-            <div class="form-group">
-                <label for="content">Content: </label>
-                <InputTextArea id="content" @bind-Value="context.Content" class="form-control" />
-            </div>
+            <FieldInputSelect 
+                Id="category" Label="Category" SelectItems="context.Categories"
+                @bind-Value="context.CategoryId" Validation="@(() => context.CategoryId)" />
+            <FieldInputText 
+                Id="title" Label="Title"
+                @bind-Value="context.Title" Validation="@(() => context.Title)" />
+            <FieldInputTextArea 
+                Id="content" Label="Content" 
+                @bind-Value="context.Content" Validation="@(() => context.Content)" />
         </FieldsTemplate>
     </ItemDetails>
     }
