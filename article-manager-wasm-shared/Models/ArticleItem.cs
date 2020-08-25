@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace article_manager_wasm.Models
+namespace shared.Models
 {
     public class ArticleItem
     {

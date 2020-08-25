@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace article_manager_wasm.Services
+namespace frontend.Services
 {
     public interface ICRUDService<T, K>
     {

@@ -1,10 +1,11 @@
 using System.Threading.Tasks;
-using article_manager_wasm.Models;
-using article_manager_wasm.Services;
+using shared.Models;
+using frontend.Services;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using System.Net.Http;
 
-namespace article_manager_wasm
+namespace frontend
 {
     public class Program
     {
@@ -14,6 +15,7 @@ namespace article_manager_wasm
             builder.RootComponents.Add<App>("app");
             builder.Services.AddTransient<ICRUDService<ArticleCategoryListItem, ArticleCategoryItem>, ArticleCategoriesService>();
             builder.Services.AddTransient<ICRUDService<ArticleListItem, ArticleItem>, ArticlesService>();
+            builder.Services.AddTransient<HttpClient>();
             await builder.Build().RunAsync();
         }
     }
