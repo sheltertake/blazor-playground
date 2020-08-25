@@ -10,21 +10,34 @@
     </div>
     }
 
-    @if(currentCategory == null)
+    @if(categoryModel.Item == null)
     {
-    <ArticleCategoriesList 
-        ArticleCategoryListItems="articleCategoryListItems"
-        OnAddClick="AddCategory"
-        OnEditClick="EditCategory"
-        OnDeleteClick="DeleteCategory">
-    </ArticleCategoriesList>
+        <ItemList
+            Model="categoriesModel"
+            OnAddClick="AddCategory"
+            OnEditClick="EditCategory"
+            OnDeleteClick="DeleteCategory">
+        </ItemList>
     }
     else 
     {
-    <ArticleCategory 
-        Category="currentCategory"
-        OnSaveClick="SaveCategory" 
-        OnCancelClick="ShowList">
-    </ArticleCategory>
+        <ItemDetails 
+            ItemType="ArticleCategoryItem"
+            Model="categoryModel"
+            OnSaveClick="SaveCategory" 
+            OnCancelClick="ShowList">
+            <FieldsTemplate Context="Category">
+                <div class="form-group">
+                    <label for="name">Name: </label>
+                    <InputText id="name" @bind-Value="Category.Name" class="form-control" />
+                    <ValidationMessage For="@(() => Category.Name)" />
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description: </label>
+                    <InputTextArea id="description" @bind-Value="Category.Description" class="form-control" />
+                </div>
+            </FieldsTemplate>
+        </ItemDetails>
     }
 </div>

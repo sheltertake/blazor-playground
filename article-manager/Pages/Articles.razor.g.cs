@@ -3,13 +3,24 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using article_manager.Models;
 using article_manager.Services;
+using frontendlib.Models;
 
 namespace article_manager.Pages
 {
     public partial class Articles : ComponentBase
     {  
-        private ArticleListItem[] articleListItems = new ArticleListItem[0];
-        private ArticleItem currentArticle;
+        private ItemListModel articlesModel = new ItemListModel()
+        {
+            ItemName = "Article",
+            Headers =  new string[] { "Id", "Title", "Category"},
+            Items = new ArticleListItem[0]
+        };
+
+        protected ItemDetailsModel<ArticleItem> articleModel = new ItemDetailsModel<ArticleItem>()
+        {
+            ItemName = "Category"
+        };
+
         private string error; 
 
         [Inject]
@@ -22,31 +33,31 @@ namespace article_manager.Pages
 
         public async Task ShowList()
         {
-            articleListItems = await service.GetList();
-            this.currentArticle = null;
+            articlesModel.Items = await service.GetList();
+            articleModel.Item = null;
         }
 
         public async Task AddArticle() 
         {
-            this.currentArticle = await service.GetNew();
+            this.articleModel.Item = await service.GetNew();
         }
 
-        public async Task EditArticle(ArticleListItem item) 
+        public async Task EditArticle(object item) 
         {
-            this.currentArticle = await service.Get(item.Id);
+            this.articleModel.Item = await service.Get(((ArticleListItem)item).Id);
         }
 
         public async Task SaveArticle(ArticleItem item)
         {
             try
             {
-                if(currentArticle.Id == 0) 
+                if(articleModel.Item.Id == 0) 
                 {
-                    await service.Create(currentArticle);
+                    await service.Create(articleModel.Item);
                 } 
                 else
                 {
-                    await service.Update(currentArticle);
+                    await service.Update(articleModel.Item);
                 }
                 await this.ShowList();
             }
@@ -56,11 +67,11 @@ namespace article_manager.Pages
             }
         }
 
-        public async Task DeleteArticle(ArticleListItem item)
+        public async Task DeleteArticle(object item)
         {
             try
             {
-                await service.Delete(item.Id);
+                await service.Delete(((ArticleListItem)item).Id);
                 await this.ShowList();
             }
             catch(Exception ex)
