@@ -9,7 +9,7 @@ namespace MyFirstBlazor.Components
         {
             // Implemented in exampleJsInterop.js
             return jsRuntime.InvokeAsync<string>(
-                "exampleJsFunctions.showPrompt",
+                "exampleJsFunctions.alert",
                 message);
         }
     }
