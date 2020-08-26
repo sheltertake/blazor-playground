@@ -1,0 +1,37 @@
+﻿@page "/twoway-eventcallback"
+
+<AlertTwoWayEventCallback @bind-Show="@ShowAlert">
+    <span class="oi oi-check mr-2" aria-hidden="true"></span>
+    <strong>Blazor is soo cool!</strong>
+</AlertTwoWayEventCallback>
+<hr />
+<button @onclick="@ToggleAlert">Toggle2</button>
+<button @onclick="@Refresh">Refresh</button>
+
+<pre>Parent: @ShowAlert.ToString()</pre>
+
+<hr />
+
+
+
+@code {
+    private bool showAlert = true;
+    //public bool ShowAlert { get; set; } = true;
+    public bool ShowAlert
+    {
+        get
+        {
+            return showAlert;
+        }
+        set
+        {
+            if (value != showAlert)
+            {
+                showAlert = value;
+                //this.StateHasChanged();
+            }
+        }
+    }
+    public void ToggleAlert() => ShowAlert = !ShowAlert;
+    public void Refresh() => StateHasChanged();
+}

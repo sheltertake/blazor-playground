@@ -1,0 +1,26 @@
+﻿<pre>Child: @Show.ToString()</pre>
+@if (Show)
+{
+    <div class="alert alert-secondary mt-4" role="alert">
+        @ChildContent
+    </div>
+    <button @onclick="@ToggleMe">Toggle Me</button>
+}
+@code {
+    [Parameter]
+    public bool Show { get; set; }
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    //public void ToggleMe() => Show = !Show;
+    public void ToggleMe()
+    {
+        Show = !Show;
+        //this.StateHasChanged();
+        //ShowChanged?.Invoke(Show);
+        //this.StateHasChanged();
+        ShowChanged.InvokeAsync(Show);
+    }
+
+    [Parameter]
+    public EventCallback<bool> ShowChanged { get; set; }
+}
