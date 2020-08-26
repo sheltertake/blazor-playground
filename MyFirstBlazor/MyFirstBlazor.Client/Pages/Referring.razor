@@ -1,0 +1,19 @@
+﻿@page "/referring"
+
+<h3>Referring</h3>
+
+<AlertTwoWay @ref="alert" @bind-Show="@ShowAlert">
+    <span class="oi oi-check mr-2" aria-hidden="true"></span>
+    <strong>Blazor is soo cool!</strong>
+</AlertTwoWay>
+
+<hr />
+
+<pre>Parent: @ShowAlert.ToString()</pre>
+
+<ToggleButton MyAction="@(() => alert.ToggleMe())"></ToggleButton>
+
+@code {
+    private AlertTwoWay alert;
+    public bool ShowAlert { get; set; } = true;
+}

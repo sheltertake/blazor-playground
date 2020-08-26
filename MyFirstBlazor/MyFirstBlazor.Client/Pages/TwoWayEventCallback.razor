@@ -12,26 +12,8 @@
 
 <hr />
 
-
-
 @code {
-    private bool showAlert = true;
-    //public bool ShowAlert { get; set; } = true;
-    public bool ShowAlert
-    {
-        get
-        {
-            return showAlert;
-        }
-        set
-        {
-            if (value != showAlert)
-            {
-                showAlert = value;
-                //this.StateHasChanged();
-            }
-        }
-    }
+    public bool ShowAlert { get; set; } = true;
     public void ToggleAlert() => ShowAlert = !ShowAlert;
     public void Refresh() => StateHasChanged();
 }

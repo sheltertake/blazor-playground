@@ -11,15 +11,5 @@
     public bool Show { get; set; }
     [Parameter]
     public RenderFragment ChildContent { get; set; }
-    //public void ToggleMe() => Show = !Show;
-    public void ToggleMe()
-    {
-        Show = !Show;
-        //this.StateHasChanged();
-        ShowChanged?.Invoke(Show);
-        //this.StateHasChanged();
-    }
-
-    [Parameter]
-    public Action<bool> ShowChanged { get; set; }
+    public void ToggleMe() => Show = !Show;
 }

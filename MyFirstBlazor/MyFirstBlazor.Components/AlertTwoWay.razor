@@ -15,9 +15,7 @@
     public void ToggleMe()
     {
         Show = !Show;
-        //this.StateHasChanged();
         ShowChanged?.Invoke(Show);
-        //this.StateHasChanged();
     }
 
     [Parameter]
